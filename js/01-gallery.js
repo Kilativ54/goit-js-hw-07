@@ -29,9 +29,12 @@ function showPicture(event) {
 `);
 
   instance.show();
-  gallery.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      instance.close();
-    }
-  });
+function onEscClick(event){
+if(event.key === "Escape"){
+  instance.close();
+  gallery.removeEventListener("keydown", onEscClick);
+}
+}
+
+  gallery.addEventListener("keydown", onEscClick);
 }
